@@ -1,4 +1,4 @@
-# Resources Admin
+# GraphQL Project
 
 Instructions
 - Create package.json file
@@ -8,7 +8,7 @@ Instructions
 - Create .gitignore file, this example use [gitignore.io](https://www.gitignore.io/api/node,react,macos,angular,windows,webstorm,visualstudiocode) to create it
 
 - Create .editorconfig file, read the [docs](https://editorconfig.org)
-    
+
     Example
     ```
     # editorconfig.org
@@ -27,7 +27,7 @@ Instructions
     npm i -D typescript
     ```
 - Create eslint config file, read the [docs](https://eslint.org/docs/user-guide/getting-started)
-    
+
     Then you should select the best options for your project
     ```
     npx eslint --init

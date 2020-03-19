@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "graphql",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jcahuana/template.git"
+    "url": "git+https://github.com/jcahuana/graphql.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jcahuana/template/issues"
+    "url": "https://github.com/jcahuana/graphql/issues"
   },
-  "homepage": "https://github.com/jcahuana/template#readme"
+  "homepage": "https://github.com/jcahuana/graphql#readme"
 }
