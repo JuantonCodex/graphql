@@ -4,8 +4,9 @@ const { graphql, buildSchema } = require('graphql');
 
 // Tipos escalares en GrahQL son: String, Integer, Float y Boolean.
 
-// Definimos en esquema inciail.
-// Esto Devuelve un objeto de GraphQL
+/**
+ * Definidmos el esquema inicial. Esto devuelve un objeto en GraphQL
+ */
 const schema = buildSchema(`
   type Query {
     hello: String
