@@ -1,6 +1,13 @@
 'use strict'
 
 const { graphql, buildSchema } = require('graphql');
+const express = require('express');
+const gqlMiddleware = require('express-graphql');
+
+
+// Creamos servidor de express
+const app = express();
+const port = process.env.port || 3000;
 
 // Tipos escalares en GrahQL son: String, Integer, Float y Boolean.
 
@@ -26,7 +33,20 @@ const resolvers = {
 }
 
 // Ejecutamos el query hello
-graphql(schema, '{ hello, goodbye }', resolvers).then((data) => {
-  console.log(data);
+// graphql(schema, '{ hello, goodbye }', resolvers).then((data) => {
+//   console.log(data);
 
+// });
+
+// Definimos una ruta que use GraphQL
+app.use('/api', gqlMiddleware({
+  schema: schema,
+  // Resolvers que se ejecutarán
+  rootValue: resolvers,
+  // Entorno de desarrolo de GraphQL que se usará
+  graphiql: true
+}));
+
+app.listen(port, () => {
+  console.log(`Server is listening at http://localhost:${port}/api`);
 });
