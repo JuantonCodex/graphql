@@ -1,44 +1,26 @@
 'use strict'
 
-const { graphql, buildSchema } = require('graphql');
-const express = require('express');
-const gqlMiddleware = require('express-graphql');
-
+const { buildSchema } = require('graphql')
+const express = require('express')
+const gqlMiddleware = require('express-graphql')
+const { readFileSync } = require('fs')
+const { join } = require('path')
+const resolvers = require('./lib/resolvers.js')
 
 // Creamos servidor de express
-const app = express();
-const port = process.env.port || 3000;
-
-// Tipos escalares en GrahQL son: String, Integer, Float y Boolean.
+const app = express()
+const port = process.env.port || 3000
 
 /**
- * Definidmos el esquema inicial.
+ * Definimos el esquema inicial.
  * Esto devuelve un objeto en GraphQL
  */
-const schema = buildSchema(`
-  type Query {
-    "Retorna un saludo"
-    hello: String
-    "Retorna una despedida"
-    goodbye: String
-  }
-`);
-
-// Agregamos los resolvers
-const resolvers = {
-  hello: () => {
-    return 'Mensaje de saludo'
-  },
-  goodbye: (params) => {
-    return 'Mensaje de despedida'
-  }
-}
-
-// Ejecutamos el query hello
-// graphql(schema, '{ hello, goodbye }', resolvers).then((data) => {
-//   console.log(data);
-
-// });
+const schema = buildSchema(
+  readFileSync(
+    join(__dirname, 'lib', 'schema.graphql'),
+    'utf-8'
+  )
+)
 
 // Definimos una ruta que use GraphQL
 app.use('/api', gqlMiddleware({
@@ -47,8 +29,8 @@ app.use('/api', gqlMiddleware({
   rootValue: resolvers,
   // Entorno de desarrolo de GraphQL que se usará
   graphiql: true
-}));
+}))
 
 app.listen(port, () => {
-  console.log(`Server is listening at http://localhost:${port}/api`);
-});
+  console.log(`Server is listening at http://localhost:${port}/api`)
+})
