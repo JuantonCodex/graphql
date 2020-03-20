@@ -17,7 +17,9 @@ const port = process.env.port || 3000;
  */
 const schema = buildSchema(`
   type Query {
-    hello: String,
+    "Retorna un saludo"
+    hello: String
+    "Retorna una despedida"
     goodbye: String
   }
 `);
